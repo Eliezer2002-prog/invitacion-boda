@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Nuestra Boda</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#2a1a20;--card:#3a2428;--pink:#e89bb0;--line:#6b4450;--txt:#f5e9ec}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:'Cormorant Garamond',serif;font-size:20px;text-align:center}
+.script{font-family:'Great Vibes',cursive;color:var(--pink);line-height:1.05}
+h2{color:var(--pink);letter-spacing:.15em;text-transform:uppercase;font-weight:500;font-size:30px;margin:0 0 18px}
+.sp{letter-spacing:.3em;text-transform:uppercase;font-size:16px}
+section{padding:60px 20px;max-width:520px;margin:auto}
+.bg{background:radial-gradient(circle at 20% 15%,#f2c0cf 0,transparent 40%),radial-gradient(circle at 85% 90%,#ead5b0 0,transparent 45%),var(--bg)}
+#cover{position:fixed;inset:0;z-index:9;display:flex;align-items:center;justify-content:center;transition:opacity .6s}
+.arch{background:var(--card);border:1px solid #b08a4a;border-radius:24px;width:min(88vw,380px);padding:50px 20px}
+.arch .script{font-size:54px}
+.btn{display:inline-block;background:var(--pink);color:#2a1a20;border:2px solid var(--pink);border-radius:40px;padding:16px 34px;font:600 18px 'Cormorant Garamond',serif;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.btn.o{background:none;color:var(--pink);padding:12px 28px;font-size:16px}
+#hero{min-height:90vh;display:flex;flex-direction:column;justify-content:center;max-width:none}
+#hero .script{font-size:60px}
+.t{font-size:62px;color:var(--pink)}
+.cd{display:flex;gap:10px;justify-content:center;margin:20px 0 30px}
+.cd div{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 4px;flex:1;font-size:36px;color:var(--pink)}
+.cd small{display:block;font-size:19px;color:var(--txt)}
+.dots{display:flex;gap:14px;justify-content:center;margin-top:20px}
+.dots i{width:46px;height:46px;border-radius:50%;border:3px solid #fff}
+.card{background:var(--card);border:1px solid var(--line);border-radius:28px;padding:22px;text-align:left;margin:16px 0}
+.card b{color:var(--pink);font-weight:500}
+form.card{padding:24px;text-align:center}
+input,select,textarea{width:100%;background:#2a1a20;color:var(--txt);border:1px solid var(--line);border-radius:18px;padding:18px;font:inherit;margin-bottom:14px}
+textarea{height:130px;resize:vertical}
+.ch{display:flex;gap:12px;margin-bottom:14px}
+.ch label{flex:1;border:1px solid var(--line);border-radius:18px;padding:18px 6px;cursor:pointer}
+.ch input{display:none}
+.ch input:checked+span{color:var(--pink);font-weight:600}
+.ch label:has(input:checked){border-color:var(--pink);background:#4a2c34}
+#msg{margin-top:14px;color:var(--pink)}
+#mb{display:none;position:fixed;right:16px;bottom:16px;z-index:5;width:52px;height:52px;border-radius:50%;border:1px solid var(--pink);background:var(--card);font-size:22px;cursor:pointer}
+</style></head><body>
+
+<audio id="au" src="musica.mp3" loop preload="none"></audio>
+<button id="mb" aria-label="Música">🔊</button>
+<div id="cover" class="bg"><div class="arch">
+<div class="sp" style="margin-bottom:34px">Nuestra Boda</div>
+<div class="script" style="font-size:50px">Arileydis De León</div>
+<div class="script" style="font-size:40px">&amp;</div>
+<div class="script" style="font-size:50px">Eliezer Encarnación</div>
+<p class="sp" style="margin:26px 0">Domingo 20 de diciembre de 2026</p>
+<button class="btn" onclick="openInv()">Abrir invitación</button></div></div>
+
+<section id="hero" class="bg">
+<div class="sp" style="margin-bottom:34px">Tenemos la alegría de invitarles a nuestra boda</div>
+<div class="script">Arileydis De León</div><div class="sp" style="margin-top:14px">Novia</div>
+<div class="script" style="font-size:44px;margin:18px 0">&amp;</div>
+<div class="script">Eliezer Encarnación</div><div class="sp" style="margin-top:14px">Novio</div>
+</section>
+
+<section>
+<h2>Información de la celebración</h2>
+<div class="sp">Se llevará a cabo a las</div>
+<div class="t">4:00 PM</div>
+<p style="font-size:28px">domingo 20 de diciembre de 2026</p>
+<div class="sp" style="margin-top:34px">En la</div>
+<p style="font-size:30px;color:var(--pink);margin:8px 0 20px">Iglesia Dios Rey Soberano</p>
+<p><a class="btn o" style="width:100%" href="https://maps.app.goo.gl/nybKJuBhkw4fisBLA" target="_blank" rel="noopener">📍 Ver ubicación</a></p>
+<h2 style="margin-top:40px">Cuenta regresiva</h2>
+<div class="cd"><div><span id="d">0</span><small>días</small></div><div><span id="h">0</span><small>horas</small></div><div><span id="m">0</span><small>min</small></div><div><span id="s">0</span><small>seg</small></div></div>
+<p><button class="btn o" style="width:100%" onclick="ics()">Añadir al calendario</button></p>
+<p><a class="btn" style="width:100%" href="#rsvp">Confirmar asistencia</a></p>
+</section>
+
+<section>
+<h2>Código de vestimenta</h2>
+<p>Vestimenta elegante, colores pasteles</p>
+<div class="dots"><i style="background:#fcc7ff"></i><i style="background:#ff8fbf"></i><i style="background:#d4c19c"></i><i style="background:#a9b9c8"></i><i style="background:#e0aeb3"></i></div>
+</section>
+
+<section>
+<h2>Lista de regalos</h2>
+<p>Tu presencia es nuestro mejor regalo. Si deseas hacernos un obsequio, puedes hacerlo aquí:</p>
+<div class="card"><b>Banco Popular</b> · Ahorros<br>Cuenta: <span>0839892643</span><br>Titular: Arileydis De León<br><br><button class="btn o" onclick="cp(this)">Copiar número</button></div>
+<div class="card"><b>Banco Popular</b> · Corriente<br>Cuenta: <span>818826156</span><br>Titular: Eliezer Encarnación<br><br><button class="btn o" onclick="cp(this)">Copiar número</button></div>
+</section>
+
+<section id="rsvp">
+<h2>Confirmar asistencia</h2>
+<form class="card" id="f">
+<input name="nombre" placeholder="Tu nombre*" required>
+<div class="ch">
+<label><input type="radio" name="asistencia" value="Sí asistirá" checked><span>¡Sí asistiré! 🎉</span></label>
+<label><input type="radio" name="asistencia" value="No asistirá"><span>No podré asistir</span></label></div>
+<select name="personas"><option>1 persona</option><option>2 personas</option><option>3 personas</option><option>4 personas</option><option>5 personas</option></select>
+<button class="btn" id="b" type="submit">Enviar respuesta</button>
+<div id="msg"></div>
+</form>
+</section>
+
+<script>
+// ====== PEGA AQUÍ LA URL DE TU GOOGLE APPS SCRIPT (ver instrucciones) ======
+const SHEET_URL = "https://script.google.com/macros/s/AKfycbzN3qgYdZL2-wvGyRySI1nCnk8CSV-7jZiYRDuU5tBXghEG6sYFsDCfpBXWm4ejRUx6Cg/exec";
+// ============================================================================
+const $=id=>document.getElementById(id);
+function openInv(){const c=$('cover');c.style.opacity=0;setTimeout(()=>c.remove(),600);
+const au=$('au'),mb=$('mb');
+au.play().then(()=>{mb.style.display='block'}).catch(()=>{});
+mb.onclick=()=>{if(au.paused){au.play();mb.textContent='🔊'}else{au.pause();mb.textContent='🔇'}}}
+const target=new Date(2026,11,20,16,0,0);
+function tick(){let t=Math.max(0,target-new Date())/1000;
+$('d').textContent=Math.floor(t/86400);$('h').textContent=Math.floor(t%86400/3600);
+$('m').textContent=Math.floor(t%3600/60);$('s').textContent=Math.floor(t%60)}
+tick();setInterval(tick,1000);
+function cp(b){const n=b.parentNode.querySelector('span').textContent;
+(navigator.clipboard?navigator.clipboard.writeText(n):Promise.reject()).catch(()=>{const x=document.createElement('input');x.value=n;document.body.appendChild(x);x.select();document.execCommand('copy');x.remove()});
+b.textContent='¡Copiado!';setTimeout(()=>b.textContent='Copiar número',1500)}
+function ics(){const s=`BEGIN:VCALENDAR\nVERSION:2.0\nBEGIN:VEVENT\nSUMMARY:Boda de Arileydis y Eliezer\nDTSTART:20261220T160000\nDTEND:20261220T230000\nEND:VEVENT\nEND:VCALENDAR`;
+const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([s],{type:'text/calendar'}));a.download='boda.ics';a.click()}
+$('f').addEventListener('submit',async e=>{e.preventDefault();
+const f=e.target,d={nombre:f.nombre.value.trim(),asistencia:f.asistencia.value,personas:f.personas.value,mensaje:''};
+if(!d.nombre)return;$('b').disabled=true;$('msg').textContent='Enviando...';
+try{
+ if(SHEET_URL){await fetch(SHEET_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(d)})}
+ else{const l=JSON.parse(localStorage.getItem('rsvps')||'[]');l.push(d);localStorage.setItem('rsvps',JSON.stringify(l))}
+ $('msg').textContent=d.asistencia==='Sí asistirá'?'¡Gracias! Te esperamos 🎉':'Gracias por avisarnos. ¡Te tendremos presente!';
+ f.reset();
+}catch(err){$('msg').textContent='No se pudo enviar. Intenta de nuevo.'}
+$('b').disabled=false});
+</script></body></html>
